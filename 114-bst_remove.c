@@ -22,17 +22,20 @@ bst_t *bst_remove(bst_t *root, int value)
 		if (root->left == NULL)
 		{
 			bst_t *right_child = root->right;
+
 			free(root);
 			return (right_child);
 		}
 		else if (root->right == NULL)
 		{
 			bst_t *left_child = root->left;
+
 			free(root);
 			return (left_child);
 		}
 
 		bst_t *successor = root->right;
+
 		while (successor->left != NULL)
 			successor = successor->left;
 
