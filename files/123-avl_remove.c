@@ -1,6 +1,21 @@
 #include "binary_trees.h"
 
 /**
+ * avl_find_min - FInds the minimum node in an AVL tree
+ * @node: Pointer to the root node of the tree
+ * Return: Pointer to the minimum node
+ */
+avl_t *avl_find_min(avl_t *node)
+{
+	avl_t *current = node;
+
+	while (current && current->left)
+		current = current->left;
+
+	return (current);
+}
+
+/**
  * avl_remove - Removes a node from an AVL tree
  * @root: Pointer to the root node of the tree for removing a node
  * @value: Value to remove in the tree
@@ -46,7 +61,7 @@ avl_t *avl_remove(avl_t *root, int value)
 	if (root == NULL)
 		return (root);
 
-	root->height = 1 + MAX(avl_height(root->left), avl_height(root->right));
+	root->right = 1 + MAX(avl_height(root->left), avl_height(root->right));
 
 	int balance = avl_balance_factor(root);
 
@@ -62,7 +77,7 @@ avl_t *avl_remove(avl_t *root, int value)
 	if (balance < -1 && avl_balance_factor(root->right) <= 0)
 		return (avl_rotate_left(root));
 
-	if (balance  -1 && avl_balance_factor(root->right) > 0)
+	if (balance < -1 && avl_balance_factor(root->right) > 0)
 	{
 		root->right = avl_rotate_right(root->right);
 		return (avl_rotate_left(root));

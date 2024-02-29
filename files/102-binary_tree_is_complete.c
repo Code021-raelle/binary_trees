@@ -18,7 +18,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	while (tree)
 	{
 		max_nodes = 1 << current_level;
-		nodes = binary_tree_count(tree);
+		nodes = binary_tree_print(tree);
 
 		if (nodes != max_nodes)
 			return (0);

@@ -19,7 +19,7 @@ bst_t *array_to_bst(int *array, size_t size)
 	{
 		if (bst_insert(&root, array[i]) == NULL)
 		{
-			bst_free(root);
+			bst_remove(bst_t *root, int value);
 			return (NULL);
 		}
 	}

@@ -1,7 +1,12 @@
 #ifndef BINARY_TREES_H
 #define BINARY_TREES_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 #include <stddef.h>
+#include <limits.h>
 
 /***** Basic binary tree structure *****/
 
@@ -23,13 +28,12 @@ struct binary_tree_s
 
 typedef struct binary_tree_s binary_tree_t;
 
-typedef struct heap_s
-{
-	int n;
-	struct heap_s *parent;
-	struct heap_s *left;
-	struct heap_s *right;
-} heap_t;
+typedef struct binary_tree_s bst_t;
+
+typedef struct binary_tree_s avl_t;
+
+typedef struct binary_tree_s heap_t;
+
 
 /******** Function prototypes ********/
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
@@ -61,7 +65,8 @@ int binary_tree_is_heap(const binary_tree_t *tree);
 
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+		const binary_tree_t *second);
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 

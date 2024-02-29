@@ -23,7 +23,7 @@ binary_tree_t *binary_trees_ancestor(
 		{
 			if (temp1 == temp2)
 				return ((binary_tree_t *)temp1);
-			temp = temp2->parent;
+			temp2 = temp2->parent;
 		}
 		temp1 = temp1->parent;
 	}
